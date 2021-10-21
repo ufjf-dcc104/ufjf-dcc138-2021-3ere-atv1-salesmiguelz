@@ -17,18 +17,24 @@
         canvas.width = 480;
         canvas.height = 480;
         let x = 250;
+        let t0;
+        let dt;
+        requestAnimationFrame(desenha);
 
-        desenha();
 
-
-        function desenha(){
+        function desenha(t){
+            t0 = t0 ?? t;
+            dt = (t - t0)/1000;
             //Fundo
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             //Elementos
             ctx.fillStyle = "white";
-            ctx.fillRect(x , 150, 20, 20);
+            ctx.fillRect(x,150, 20, 20);
+            x= x-2;
+            requestAnimationFrame(desenha);
+            t0 = t;
         }
        
     </script>
