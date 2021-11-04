@@ -15,8 +15,10 @@
         let canvas = document.querySelector("canvas");
         let ctx = canvas.getContext("2d");
         canvas.width = 480;
-        canvas.height = 480;
-        let x = 250;
+        canvas.height = 320;
+        let x = 150;
+        let y = 100;
+        let a = 0;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -31,7 +33,8 @@
 
             //Atualiza estados
             x = x + 10*dt;
-            y = 100 + 1500*Math.cos(t/200)*dt;
+            a = a + 2*Math.PI*dt;
+            y = 100 + 100*Math.cos(a);
 
             //Elementos
             ctx.fillStyle = "white";
