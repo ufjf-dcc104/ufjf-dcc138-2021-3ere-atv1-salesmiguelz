@@ -21,6 +21,8 @@
 
         let y = 100;
         let vy = 0;
+
+        const V = 180;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -52,16 +54,16 @@
             console.log(e.key);
             switch(e.key){
                 case "ArrowUp":
-                    vy = -40;
+                    vy = -V;
                     break;
                 case "ArrowDown":
-                    vy = +40;
+                    vy = +V;
                     break;
                 case "ArrowRight":
-                    vx = +40;
+                    vx = +V;
                     break;
                 case "ArrowLeft":
-                    vx = -40;
+                    vx = -V;
                     break;
             }
         }
