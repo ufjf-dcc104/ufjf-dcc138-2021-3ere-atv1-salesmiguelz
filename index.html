@@ -27,7 +27,7 @@
             cor: "white",
             desenhar: desenharElemento, 
             mover: moverElemento
-        }
+        };
 
         const sprites = [];
         for (let ne = 0; ne < 10; ne++) {
@@ -44,7 +44,29 @@
                 controlar: perseguirAlvo,
             }
             sprites.push(e);
-        }
+        };
+
+        let o = {
+            x: -1000,
+            vx: 0,
+            ax: 0,
+            y: 150,
+            vy: 0,
+            ay: 0,
+            cor: "blue",
+            desenhar: desenharElemento, 
+            mover: moverElemento,
+            controlar: function(){
+                if(this.x > canvas.width + 60){
+                    this.x = -1000;
+                    this.ax = 0;
+                    this.vx = 0;
+                }
+            }       
+        };
+
+        sprites.push(o);
+
         const K = 180;
         let t0;
         let dt;
@@ -63,9 +85,8 @@
 
             for(let s = 0; s < sprites.length; s++){
                 const sprite = sprites[s];
-
-                sprite.controlar(p);
-                sprite.mover();
+                sprite.controlar?.(p);
+                sprite.mover?.();
                 sprite.desenhar();
             }
 
@@ -133,6 +154,14 @@
                     break;
                 case "ArrowLeft":
                     p.ax = 0;
+                    break;
+                case " ":
+                    if(o.x === -1000){
+                        o.x = p.x;
+                        o.y = p.y;
+                        o.vx = 200;
+                        o.ax = 100;
+                    }
                     break;
             }
         }
